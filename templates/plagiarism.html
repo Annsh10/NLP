@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plagiarism Checker - NLP Toolkit</title>
+        <!-- Favicon links -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/icons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/icons/apple-touch-icon.png">
+    <link rel="manifest" href="/static/icons/site.webmanifest">
+    <link rel="shortcut icon" href="/static/icons/favicon.ico">
+  <style>
+    body {
+      background: #f0f4f8;
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 40px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease-in-out;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    p.intro {
+      font-size: 1rem;
+      color: #555;
+      text-align: center;
+    }
+    textarea {
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: none;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: none;
+      background: linear-gradient(135deg, #ff6a00, #ee0979);
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    button:hover { transform: scale(1.05); }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background: #f7f7f7;
+      border-radius: 12px;
+      color: #333;
+    }
+    .back {
+      display: block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #2575fc;
+      font-weight: bold;
+    }
+    @keyframes fadeIn { from {opacity:0;} to{opacity:1;} }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>📑 Plagiarism Checker</h2>
+    <p class="intro">Paste your text here or upload a document to check for plagiarism using NLP-powered models.</p>
+    <form method="POST">
+      <textarea name="text" rows="8" placeholder="Paste text here...">{{ text }}</textarea>
+      <button type="submit">Check Plagiarism</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+      <h3>Result:</h3>
+      <p>{{ result }}</p>
+    </div>
+    {% elif error %}
+      <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <a href="/" class="back">⬅ Back to Home</a>
+  </div>
+</body>
+</html>
